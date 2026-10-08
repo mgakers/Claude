@@ -15,14 +15,55 @@
       display: grid;
       place-items: center;
       overflow: hidden;
+      perspective: 1200px;
     }
-    .logo {
-      width: min(60vw, 60vh);
+    .cube {
+      --size: min(45vw, 45vh);
+      --half: calc(var(--size) / 2);
+      position: relative;
+      width: var(--size);
+      height: var(--size);
+      transform-style: preserve-3d;
+      animation: spin 30s linear infinite;
+    }
+    .face {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: #000;
+      border: 1px solid #333;
+      backface-visibility: hidden;
+    }
+    .face img {
+      width: 75%;
       height: auto;
+    }
+    .front  { transform: translateZ(var(--half)); }
+    .back   { transform: rotateY(180deg) translateZ(var(--half)); }
+    .right  { transform: rotateY(90deg) translateZ(var(--half)); }
+    .left   { transform: rotateY(-90deg) translateZ(var(--half)); }
+    .top    { transform: rotateX(90deg) translateZ(var(--half)); }
+    .bottom { transform: rotateX(-90deg) translateZ(var(--half)); }
+
+    @keyframes spin {
+      from { transform: rotateX(-20deg) rotateY(0deg) rotateZ(0deg); }
+      to   { transform: rotateX(340deg) rotateY(720deg) rotateZ(360deg); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cube { animation-duration: 120s; }
     }
   </style>
 </head>
 <body>
-  <img class="logo" src="logo.svg" alt="Sat logo">
+  <div class="cube" role="img" aria-label="Rotating cube with the Sat logo on each face">
+    <div class="face front"><img src="logo.svg" alt=""></div>
+    <div class="face back"><img src="logo.svg" alt=""></div>
+    <div class="face right"><img src="logo.svg" alt=""></div>
+    <div class="face left"><img src="logo.svg" alt=""></div>
+    <div class="face top"><img src="logo.svg" alt=""></div>
+    <div class="face bottom"><img src="logo.svg" alt=""></div>
+  </div>
 </body>
 </html>

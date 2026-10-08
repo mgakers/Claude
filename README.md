@@ -1,6 +1,6 @@
 # Sat Logo
 
-A minimal static web app that displays the Sat logo centered on a black background.
+A minimal static web app that shows the Sat logo on all six faces of a slowly rotating 3D cube, on a black background (pure CSS, no libraries).
 
 - `index.html` – the page
 - `logo.svg` – vector logo, converted from the original Illustrator EPS
