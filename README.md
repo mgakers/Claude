@@ -4,6 +4,11 @@ A minimal static web app that shows the Sat logo on all six faces of a slowly ro
 
 - `index.html` – the page
 - `logo.svg` – vector logo, converted from the original Illustrator EPS
+- `keepawake.webm` / `keepawake.mp4` – tiny silent video used as a keep-awake fallback
+
+While the page is open and visible it keeps the screen from sleeping, using the
+browser's Screen Wake Lock API, or a hidden muted looping video where that isn't
+available. If the browser blocks autoplay, click once on the page to enable it.
 
 Open `index.html` in a browser, or serve the folder:
 
